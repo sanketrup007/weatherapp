@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Weatherly</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Famous Places
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"onclick="refreshPage('Delhi')">Delhi</a></li>
+                <li><a class="dropdown-item" href="#" onclick="refreshPage('Paris')">Paris</a></li>
+                <li><a class="dropdown-item" href="#"onclick="refreshPage('New York')">New York</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Use?</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container"><main>
+      <h1 class="my-4 text-center">Weather for <span id="cityName"></span></h1>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Temperature</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><span id="temp2"></span></li><small class="text-body-secondary fw-light">°C</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Temperature <span id="temp"></span>°C</li>
+                <li>Min Temperature <span id="min_temp"></span>°C</li>
+                <li>Max Temperature <span id="max_temp"></span>°C</li>
+                
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Cloud and Humidity</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><span id="humidity2"></span></li><small class="text-body-secondary fw-light"> %</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Cloud PCT <span id="cloud_pct"></span>%</li>
+                <li>Feels like <span id="feels_like"></span></li>
+                <li>Humidity <span id="humidity"></span>%</li>
+                
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Wind and Sun</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><span id="wind_speed2"></span><small class="text-body-secondary fw-light"> Knots</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Wind Speed is <span id="wind_speed"></span></li>
+                <li>Sunrise <span id="sunrise"></span></li>
+                <li>Sunset <span id="sunset"></span></li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <h2 class="display-6 text-center mb-4">Other Comman Places Weather</h2>
+  
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th style="width: 9%;"></th>
+              <th style="width: 9%;">Cloud Presence %</th>
+              <th style="width: 9%;">Feels Like</th>
+              <th style="width: 9%;">Humidity %</th>
+              <th style="width: 9%;">Current Temp °C</th>
+              <th style="width: 9%;">Max Temp °C</th>
+              <th style="width: 9%;">Min Temp °C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start" >Mumbai</th>
+              <td><span id="cloud_pct_mum"></span></td>
+              <td><span id="feels_like_mum"></span></td>
+              <td><span id="humidity_mum"></span></td>
+              <td><span id="temp_mum"></span></td>
+              <td><span id="max_temp_mum"></span></td>
+              <td><span id="min_temp_mum"></span></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Pune</th>
+              <td><span id="cloud_pct_pu"></span></td>
+              <td><span id="feels_like_pu"></span></td>
+              <td><span id="humidity_pu"></span></td>
+              <td><span id="temp_pu"></span></td>
+              <td><span id="max_temp_pu"></span></td>
+              <td><span id="min_temp_pu"></span></td>
+            </tr>
+          </tbody>
+  
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start">Tokyo</th>
+              <td><span id="cloud_pct_to"></span></td>
+              <td><span id="feels_like_to"></span></td>
+              <td><span id="humidity_to"></span></td>
+              <td><span id="temp_to"></span></td>
+              <td><span id="max_temp_to"></span></td>
+              <td><span id="min_temp_to"></span></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Beijing</th>
+              <td><span id="cloud_pct_be"></span></td>
+              <td><span id="feels_like_be"></span></td>
+              <td><span id="humidity_be"></span></td>
+              <td><span id="temp_be"></span></td>
+              <td><span id="max_temp_be"></span></td>
+              <td><span id="min_temp_be"></span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </main></div>
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+
+  <!-- Footer -->
+  <footer class="text-center text-white" style="background-color: #2b45d7">
+    <!-- Grid container -->
+    <div class="container">
+      <!-- Section: Links -->
+      <section class="mt-5">
+        <!-- Grid row-->
+        <div class="row text-center d-flex justify-content-center pt-5">
+          <!-- Grid column -->
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" class="text-white">About us</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" class="text-white">Products</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" class="text-white">Awards</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" class="text-white">Help</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" class="text-white">Contact</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-5" />
+
+      <!-- Section: Text -->
+      <!-- <section class="mb-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+              distinctio earum repellat quaerat voluptatibus placeat nam,
+              commodi optio pariatur est quia magnam eum harum corrupti
+              dicta, aliquam sequi voluptate quas.
+            </p>
+          </div>
+        </div>
+      </section> -->
+      <!-- Section: Text -->
+
+      <!-- Section: Social -->
+      <section class="text-center mb-5">
+        <a href="" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-github"></i>
+        </a>
+      </section>
+      <!-- Section: Social -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2023 Copyright:
+      <a class="text-white" href="https://www.linkedin.com/in/sanket-rupnavar-5b6b1a229"
+         >Sanket</a
+        >
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

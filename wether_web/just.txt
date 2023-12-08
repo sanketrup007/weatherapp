@@ -1,0 +1,21 @@
+cloud_pct.innerHTML = responce.cloud_pct
+feels_like.innerHTML = responce.feels_like
+humidity.innerHTML = responce.humidity
+max_temp.innerHTML = responce.max_temp
+min_temp.innerHTML = responce.min_temp
+sunrise.innerHTML = responce.sunrise
+sunset.innerHTML = responce.sunset
+temp.innerHTML = responce.temp
+wind_degrees.innerHTML = responce.wind_degrees
+wind_speed.innerHTML = responce.wind_speed
+
+<td><span id="cloud_pct_mum"></span></td>
+<td><span id="feels_like_mum"></span></td>
+<td><span id="humidity_mum"></span></td>
+<td><span id="max_temp_mum"></span></td>
+<td><span id="min_temp_mum"></span></td>
+<td><span id="sunrise_mum"></span></td>
+<td><span id="sunset_mum"></span></td>
+<td><span id="temp_mum"></span></td>
+<td><span id="wind_degrees_mum"></span></td>
+<td><span id="wind_speed_mum"></span></td>
